@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="8dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_movie_img"
@@ -49,11 +50,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:text="Year"
                 android:textAppearance="?attr/textAppearanceSubtitle1"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_char_attr_label"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/tv_movie_title"
@@ -72,6 +71,16 @@
                 app:layout_constraintTop_toTopOf="@+id/tv_movie_year_label"
                 app:layout_constraintWidth_min="100dp"
                 tools:text="2024" />
+
+            <ImageView
+                android:id="@+id/movie_share_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_share"
+                app:layout_constraintStart_toStartOf="@+id/tv_movie_year_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_movie_year_label"
+                app:tint="?attr/colorOnSurface" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_char_attr_label"

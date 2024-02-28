@@ -1,5 +1,6 @@
 package com.example.mymovies.ui.popular
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,14 @@ class PopularMoviesFragment : Fragment() {
                 PopularMoviesFragmentDirections
                     .actionPopularMoviesFragmentToMovieDetailFragment(it.id)
             )
+        },
+        onMovieShareBtnClick = {
+            Intent(Intent.ACTION_SEND).apply {
+                //send deeplink to open movie detail page
+                val movieInfo = "Take a loot at this Movie: ${it.title}"
+                putExtra(Intent.EXTRA_TEXT, movieInfo)
+                type = "text/plain"
+            }.also(::startActivity)
         }
     )
     private val viewModel by viewModels<PopularMoviesViewModel>()

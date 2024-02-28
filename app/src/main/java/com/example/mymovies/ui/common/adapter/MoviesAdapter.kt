@@ -13,10 +13,11 @@ import java.util.Locale
 
 class MoviesAdapter(
     private val onMovieItemClick: (movie: MovieMeta) -> Unit,
+    private val onMovieShareBtnClick: (movie: MovieMeta) -> Unit,
 ) : PagingDataAdapter<MovieMeta, MoviesAdapter.MovieItemViewHolder>(
     diffCallback = DIFFER
 ) {
-    class MovieItemViewHolder(
+    inner class MovieItemViewHolder(
         private val binding: RvItemMovieBinding
     ) : ViewHolder(binding.root) {
 
@@ -24,6 +25,9 @@ class MoviesAdapter(
             movie = movieMeta
             tvMovieYear.text = SimpleDateFormat("yyyy", Locale.getDefault())
                 .format(movieMeta.releaseDate)
+            movieShareImage.setOnClickListener {
+                onMovieShareBtnClick(movieMeta)
+            }
             Glide.with(imgMovieImg.context)
                 .load(movieMeta.imgUrl)
                 .into(imgMovieImg)
