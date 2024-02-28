@@ -9,10 +9,26 @@
         android:id="@+id/topRatedMoviesFragment"
         android:name="com.example.mymovies.ui.toprated.TopRatedMoviesFragment"
         android:label="MoviesFragment"
-        tools:layout="@layout/fragment_movie"></fragment>
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_topRatedMoviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/popularMoviesFragment"
-        android:name="com.example.mymovies.ui.popular.TopRatedMoviesFragment"
+        android:name="com.example.mymovies.ui.popular.PopularMoviesFragment"
         android:label="MoviesFragment"
-        tools:layout="@layout/fragment_movie"></fragment>
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.mymovies.ui.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+        <argument
+            android:name="movie_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

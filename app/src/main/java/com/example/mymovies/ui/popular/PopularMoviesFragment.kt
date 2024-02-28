@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymovies.databinding.FragmentMovieBinding
 import com.example.mymovies.ui.common.adapter.MoviesAdapter
@@ -16,10 +17,17 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TopRatedMoviesFragment : Fragment() {
+class PopularMoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieBinding
-    private val adapter = MoviesAdapter()
+    private val adapter = MoviesAdapter(
+        onMovieItemClick = {
+            findNavController().navigate(
+                PopularMoviesFragmentDirections
+                    .actionPopularMoviesFragmentToMovieDetailFragment(it.id)
+            )
+        }
+    )
     private val viewModel by viewModels<PopularMoviesViewModel>()
 
     override fun onCreateView(

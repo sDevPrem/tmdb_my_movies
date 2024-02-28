@@ -2,6 +2,7 @@ package com.example.mymovies.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mymovies.R
@@ -23,5 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         val navController = navHostFragment.navController
         binding.bottomNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, navDest, _ ->
+            binding.bottomNav.isVisible = navDest.id != R.id.movieDetailFragment
+        }
     }
 }

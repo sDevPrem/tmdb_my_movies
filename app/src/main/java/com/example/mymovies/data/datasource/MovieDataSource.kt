@@ -1,7 +1,9 @@
 package com.example.mymovies.data.datasource
 
+import com.example.mymovies.data.datasource.model.Movie
 import com.example.mymovies.data.datasource.model.MovieListResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieDataSource {
@@ -11,5 +13,8 @@ interface MovieDataSource {
 
     @GET("movie/popular")
     suspend fun getPopularMovies(@Query("page") page: Int): MovieListResponse
+
+    @GET("movie/{id}")
+    suspend fun getMovieDetail(@Path("id") id: String): Movie
 
 }

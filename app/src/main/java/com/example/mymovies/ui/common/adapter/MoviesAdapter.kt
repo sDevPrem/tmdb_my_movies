@@ -11,7 +11,9 @@ import com.example.mymovies.domain.model.MovieMeta
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class MoviesAdapter : PagingDataAdapter<MovieMeta, MoviesAdapter.MovieItemViewHolder>(
+class MoviesAdapter(
+    private val onMovieItemClick: (movie: MovieMeta) -> Unit,
+) : PagingDataAdapter<MovieMeta, MoviesAdapter.MovieItemViewHolder>(
     diffCallback = DIFFER
 ) {
     class MovieItemViewHolder(
@@ -42,6 +44,9 @@ class MoviesAdapter : PagingDataAdapter<MovieMeta, MoviesAdapter.MovieItemViewHo
 
     override fun onBindViewHolder(holder: MovieItemViewHolder, position: Int) {
         holder.bind(movieMeta = getItem(position) ?: return)
+        holder.itemView.setOnClickListener {
+            onMovieItemClick(getItem(position) ?: return@setOnClickListener)
+        }
     }
 
     companion object {
