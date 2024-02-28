@@ -6,6 +6,7 @@ buildscript {
     val coroutines_version by extra { "1.7.3" }
     val retrofit_version by extra { "2.9.0" }
     val paging_version by extra { "3.2.1" }
+    val glide_version by extra { "4.16.0" }
 }
 plugins {
     val hilt_version: String by extra

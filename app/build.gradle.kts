@@ -36,6 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -47,6 +53,7 @@ dependencies {
     val retrofit_version: String by rootProject.extra
     val gson_version: String by rootProject.extra
     val paging_version: String by rootProject.extra
+    val glide_version: String by rootProject.extra
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -77,6 +84,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
     //gson
     implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    //glide
+    implementation("com.github.bumptech.glide:glide:$glide_version")
 }
 kapt {
     correctErrorTypes = true
