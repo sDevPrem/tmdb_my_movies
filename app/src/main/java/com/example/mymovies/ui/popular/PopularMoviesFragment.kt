@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.movies
+package com.example.mymovies.ui.popular
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +10,17 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mymovies.databinding.FragmentMovieBinding
+import com.example.mymovies.ui.common.adapter.MoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MoviesFragment : Fragment() {
+class TopRatedMoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieBinding
     private val adapter = MoviesAdapter()
-    private val viewModel by viewModels<MoviesViewModel>()
+    private val viewModel by viewModels<PopularMoviesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,9 +40,10 @@ class MoviesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvMovies.layoutManager = GridLayoutManager(requireContext(), 2)
         rvMovies.adapter = adapter
+        topToolbar.title = "Popular Movies"
 
         lifecycleScope.launch {
-            viewModel.movies
+            viewModel.popularMovies
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collectLatest {
                     adapter.submitData(it)

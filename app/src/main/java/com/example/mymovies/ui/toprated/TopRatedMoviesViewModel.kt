@@ -1,4 +1,4 @@
-package com.example.mymovies.ui.movies
+package com.example.mymovies.ui.toprated
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,10 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesViewModel @Inject constructor(
-    private val repository: MovieRepository
+class TopRatedMoviesViewModel @Inject constructor(
+    repository: MovieRepository
 ) : ViewModel() {
 
-    val movies = repository.getTopRatedMoviesPagingSource()
+    val topRatedMovies = repository.getTopRatedMovies()
         .cachedIn(viewModelScope)
 }

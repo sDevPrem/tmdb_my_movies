@@ -9,4 +9,7 @@ interface MovieDataSource {
     @GET("movie/top_rated")
     suspend fun getTopRatedMovieList(@Query("page") page: Int): MovieListResponse
 
+    @GET("movie/popular")
+    suspend fun getPopularMovies(@Query("page") page: Int): MovieListResponse
+
 }

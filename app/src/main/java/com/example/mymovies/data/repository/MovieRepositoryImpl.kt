@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.mymovies.data.datasource.MovieDataSource
-import com.example.mymovies.data.repository.paging.TopRatedMoviePagingSource
+import com.example.mymovies.data.repository.paging.MoviesPagingSource
 import com.example.mymovies.domain.model.MovieMeta
 import com.example.mymovies.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.Flow
@@ -14,10 +14,17 @@ class MovieRepositoryImpl @Inject constructor(
     private val movieDataSource: MovieDataSource
 ) : MovieRepository {
 
-    override fun getTopRatedMoviesPagingSource(): Flow<PagingData<MovieMeta>> {
+    override fun getTopRatedMovies(): Flow<PagingData<MovieMeta>> {
         return Pager(
             config = PagingConfig(10),
-            pagingSourceFactory = { TopRatedMoviePagingSource(movieDataSource) }
+            pagingSourceFactory = { MoviesPagingSource(movieDataSource::getTopRatedMovieList) }
+        ).flow
+    }
+
+    override fun getPopularMovies(): Flow<PagingData<MovieMeta>> {
+        return Pager(
+            config = PagingConfig(10),
+            pagingSourceFactory = { MoviesPagingSource(movieDataSource::getPopularMovies) }
         ).flow
     }
 }
