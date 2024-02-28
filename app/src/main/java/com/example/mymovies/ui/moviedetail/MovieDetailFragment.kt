@@ -69,7 +69,7 @@ class MovieDetailFragment : Fragment() {
         movieTitle.text = movie.title
         movieDesc.text = movie.description
         movieRating.text = movie.rating.toString()
-        movieReleaseDate.text = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        movieReleaseDate.text = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             .format(movie.releaseDate)
         Glide.with(requireContext())
             .load(movie.backDropImgUrl)
