@@ -21,6 +21,10 @@ data class Movie(
     val voteAverage: Float,
     @SerializedName("release_date")
     val releaseDate: String,
+    @SerializedName("adult")
+    val isAdult: Boolean,
+    @SerializedName("status")
+    val status: String,
 )
 
 fun Movie.toDomain() = com.example.mymovies.domain.model.Movie(
@@ -31,5 +35,7 @@ fun Movie.toDomain() = com.example.mymovies.domain.model.Movie(
     description = overview,
     rating = voteAverage,
     releaseDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        .parse(releaseDate) ?: Date()
+        .parse(releaseDate) ?: Date(),
+    isAdultMovie = isAdult,
+    status = status
 )

@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
         android:id="@+id/movie_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        tools:layout_editor_absoluteX="-64dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -78,15 +80,49 @@
                 tools:text="0.5" />
 
             <TextView
+                android:id="@+id/movie_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Status: "
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                app:layout_constraintStart_toStartOf="@+id/movie_release_date_label"
+                app:layout_constraintTop_toBottomOf="@+id/movie_rating_label" />
+
+            <TextView
+                android:id="@+id/movie_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintBottom_toBottomOf="@+id/movie_status_label"
+                app:layout_constraintStart_toEndOf="@+id/movie_status_label"
+                app:layout_constraintTop_toTopOf="@+id/movie_status_label"
+                tools:text="released" />
+
+
+            <TextView
+                android:id="@+id/movie_adult_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="18+"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintStart_toStartOf="@+id/movie_rating_label"
+                app:layout_constraintTop_toBottomOf="@+id/movie_status_label" />
+
+            <TextView
                 android:id="@+id/movie_desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/movie_rating_label"
-                app:layout_constraintTop_toBottomOf="@+id/movie_rating_label" />
+                app:layout_constraintTop_toBottomOf="@+id/movie_adult_sign" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

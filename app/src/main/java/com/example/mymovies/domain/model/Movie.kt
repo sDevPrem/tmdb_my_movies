@@ -10,4 +10,6 @@ data class Movie(
     val description: String,
     val rating: Float,
     val releaseDate: Date,
+    val isAdultMovie: Boolean,
+    val status: String,
 )
